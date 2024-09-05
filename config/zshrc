@@ -29,6 +29,7 @@ HIST_IGNORE_SPACE="true"
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(
+  git
   gitfast
   python
   django
@@ -45,3 +46,4 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sb
 # Custom envs:
 source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.shell_env"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
