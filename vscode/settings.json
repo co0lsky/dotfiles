@@ -1,5 +1,11 @@
 {
+  // Debug:
   "debug.allowBreakpointsEverywhere": true,
+  "debug.javascript.codelens.npmScripts": "never",
+  "editor.glyphMargin": false,  // hide breakpoints
+  "debug.console.closeOnEnd": true,
+
+  // Editor:
   "editor.accessibilitySupport": "off",
   "editor.codeLens": true,
   "editor.colorDecorators": true,
@@ -9,13 +15,16 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 17,
-  "editor.glyphMargin": true,
+  "explorer.openEditors.visible": 1,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "selection",
+  "editor.renderLineHighlight": "none",
+  "editor.hideCursorInOverviewRuler": false,
   "explorer.compactFolders": false,
-  "editor.rulers": [
-    80
-  ],
+  "editor.occurrencesHighlight": "off",
+  "editor.overviewRulerBorder": false,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.rulers": [80],
   "editor.scrollBeyondLastLine": false,
   "editor.snippetSuggestions": "none",
   "editor.cursorSurroundingLines": 3,
@@ -26,17 +35,58 @@
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 80,
   "editor.hover.enabled": false,
+  "editor.stickyScroll.enabled": false,
   "explorer.confirmDelete": false,
   "explorer.decorations.badges": false,
   "extensions.ignoreRecommendations": true,
+  "diffEditor.renderSideBySide": false,
+  "breadcrumbs.enabled": false,
+  "window.commandCenter": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.hover.delay": 10000, // ms, TODO: find way to turn this off
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.horizontal": "hidden",
+
+  // Use simple navigation:
+  "editor.gotoLocation.multipleReferences": "peek",
+  "editor.gotoLocation.multipleDefinitions": "peek",
+  "editor.gotoLocation.multipleDeclarations": "peek",
+  "editor.gotoLocation.multipleImplementations": "peek",
+  "editor.gotoLocation.multipleTypeDefinitions": "peek",
+
+  // Do not modify my code, please:
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.autoSurround": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.parameterHints.enabled": false,
+  "editor.tabCompletion": "off",
+  "editor.suggestSelection": "recentlyUsed",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false,
+  },
+  "editor.formatOnType": false,
+
+  // Files:
   "files.associations": {
     ".babelrc": "jsonc",
     ".eslintrc": "jsonc",
-    "*.pyi": "python"
+    "*.pyi": "python",
+    "*.bats": "shellscript",
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.DS_Store": true,
+
+    "**/node_modules": true,
+    "**/bower_components": true,
+
     "**/__pycache__": true,
     "**/.cache": true,
     "**/.idea": true,
@@ -44,19 +94,33 @@
     "**/.mypy_cache": true,
     "**/.venv": true,
     "**/.coverage": true,
-    "**/*.py[co]": true
+    "**/*.py[co]": true,
+    "**/htmlcoverage": true,
+    "**/docs/build": true,
   },
-  "git.autofetch": false,
-  "python.formatting.provider": "none",
-  "python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
-  "python.terminal.activateEnvironment": true,
-  "python.workspaceSymbols.enabled": false,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+  },
+
+  // Stats and telemetry:
+  "telemetry.telemetryLevel": "off",
+
+  // Terminal:
+  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.stickyScroll.enabled": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.integrated.env.osx": {
     "SOBOLE_THEME_MODE": "light"
   },
-  "terminal.integrated.enableBell": true,
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "terminal.integrated.enableVisualBell": true,
+
+  // Main editor:
   "window.clickThroughInactive": false,
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
@@ -72,7 +136,22 @@
   "workbench.statusBar.visible": true,
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
-  "python.linting.enabled": false,
+  "workbench.editor.highlightModifiedTabs": false,
+  "workbench.editor.showIcons": false,
+  "workbench.editor.showTabs": "single",
+  "workbench.editor.decorations.badges": false,
+  "workbench.editor.decorations.colors": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.sideBar.location": "right",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.layoutControl.enabled": false,
+
+  "merge-conflict.autoNavigateNextConflict.enabled": false,
+
+  // Tools, extensions, and languages:
+  "problems.decorations.enabled": false,
+
+  "git.autofetch": false,
   "git.showInlineOpenFileAction": false,
   "git.autorefresh": true,
   "git.decorations.enabled": true,
@@ -86,17 +165,19 @@
   "workbench.editor.highlightModifiedTabs": false,
   "workbench.editor.showIcons": false,
 
-  "workbench.colorCustomizations": {
-    "activityBar.activeBorder": "#e5b358",
-    "activityBar.foreground": "#797d7b",
-    "gitDecoration.modifiedResourceForeground": "#d4cb68",
-    "gitDecoration.addedResourceForeground": "#C2D94C",
-    "editorSuggestWidget.highlightForeground": "#e5b358",
-    "editorSuggestWidget.selectedBackground": "#1c2a42",
-    "tab.inactiveForeground": "#676b6a",
-    "sideBar.foreground": "#b3b1adBB",
-    "sideBarTitle.foreground": "#0a0e14"
-  },
+  "python.analysis.completeFunctionParens": false,
+  "python.createEnvironment.trigger": "off",
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  "python.terminal.activateEnvironment": false,
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.autoImportCompletions": false,
+  "python.experiments.enabled": false,
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.suggest.autoImports": false,
+  "javascript.suggest.autoImports": false,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "terminal.integrated.scrollback": 5000,
   "editor.defaultFormatter": "JakeBecker.elixir-ls",
@@ -108,4 +189,36 @@
     "branch-create:command"
   ],
 
+  // Theme:
+  // "workbench.colorTheme": "Ayu Dark",
+  "workbench.colorTheme": "pustota",
+  "workbench.iconTheme": "ayu",
+
+  "editor.semanticHighlighting.enabled": false,
+  "workbench.colorCustomizations": {
+    // I customize these two, because other people might
+    // want to have error and warning decorations even in `pustota` theme.
+    "editorError.foreground": "#00000000",
+    "editorWarning.foreground": "#00000000",
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false,
+
+  // https://github.com/drcika/apc-extension extension:
+  "apc.electron": {
+    "frame": false,  // removes the title bar
+    "transparent": true,  // removes white line from the top
+    "titleBarStyle": "hidden",
+    "titleBarOverlay": {
+      "height": 35,  // icons and text has the same centring in the title bar
+    }
+  },
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
+  // Hide unwanted elements from the UI:
+  "apc.stylesheet": {
+    ".monaco-toolbar": {
+      "visible": "hidden !important",
+      "display": "none !important",
+    }
+  },
 }

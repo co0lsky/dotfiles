@@ -18,6 +18,7 @@ set -e
 echo 'Configuring your mac. Hang tight.'
 osascript -e 'tell application "System Preferences" to quit'
 
+
 # === General ===
 
 # Hide remaining battery time; show percentage
@@ -60,6 +61,9 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # === Dock ===
 
+# Size:
+defaults write com.apple.dock tilesize -int 56
+
 # Show indicator lights for open apps in Dock:
 defaults write com.apple.dock show-process-indicators -bool true
 
@@ -71,6 +75,14 @@ defaults write com.apple.dock autohide-delay -float 0
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
+
+
+# === Menu bar ===
+
+# Make status icons smaller, so they will take less space:
+# https://flaky.build/built-in-workaround-for-applications-hiding-under-the-macbook-pro-notch
+defaults write -globalDomain NSStatusItemSelectionPadding -int 12
+defaults write -globalDomain NSStatusItemSpacing -int 12
 
 
 # === Finder ===
@@ -108,6 +120,20 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Show Library folder
 chflags nohidden ~/Library
 
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
+
 
 # === Safari ===
 
@@ -141,10 +167,31 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Diable automatic period substitution:
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
+
+# === Time Machine ===
+
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+
+# === Activity monitor ===
+
+# Show the main window when launching Activity Monitor
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+
 # === Maccy ===
+
 # https://github.com/p0deje/Maccy
 defaults write org.p0deje.Maccy pasteByDefault true
 defaults write org.p0deje.Maccy historySize 20
+
 
 # Restarting apps:
 echo 'Restarting apps...'

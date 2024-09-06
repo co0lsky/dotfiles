@@ -4,12 +4,5 @@
 # So this file only includes `brew` binaries.
 
 # global:
-PATH="/usr/local/bin:$PATH"
-
-# export PATH="$HOME/.poetry/bin:$PATH"
-
-# export PATH="$HOME/.cargo/bin:$PATH"
-
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH
