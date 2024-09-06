@@ -14,7 +14,7 @@
       stderr: true
     # Homebrew
     - command: |
-        sh -c \
+        /bin/bash -c \
           "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         || true
       description: Install Homebrew
